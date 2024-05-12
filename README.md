@@ -1,0 +1,2 @@
+# kinesis-firehose-realtime-datapipeline-lambda-code
+This repo provides lambda code for Kinesis Firehose Realtime data pipeline data consumption coming as Nested JSON format. This nested JSON data format is then flattened in rows, transformed as per business rules, converted to CSV data file format and then written to staging area in S3 bucket which is finally written to database tables in Redshift.
