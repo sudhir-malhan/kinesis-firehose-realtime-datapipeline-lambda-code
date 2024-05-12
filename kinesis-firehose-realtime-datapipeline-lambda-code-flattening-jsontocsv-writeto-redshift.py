@@ -382,10 +382,10 @@ def lambda_handler(event, context):
                                         },
                                         'Body': {
                                             'Text': {
-                                                'Data': 'Failed!'
+                                                'Data': 'SmartSocialDistancing Prod lambda has failed with EXCEPTION = {}'.format(str(ex))
                                             },
                                             'Html': {
-                                                'Data': 'Failed!'
+                                                'Data': 'SmartSocialDistancing Prod lambda has failed with EXCEPTION = {}'.format(str(ex))
                                             }
                                         }
                                     }
