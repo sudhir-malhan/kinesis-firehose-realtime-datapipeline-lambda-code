@@ -378,7 +378,7 @@ def lambda_handler(event, context):
                                     },
                                     Message={
                                         'Subject': {
-                                            'Data': 'SmartSocialDistancing Prod lambda has failed.'
+                                            'Data': 'SmartSocialDistancing Prod lambda has failed with EXCEPTION = {}'.format(str(ex))
                                         },
                                         'Body': {
                                             'Text': {
@@ -394,7 +394,7 @@ def lambda_handler(event, context):
         
         response = sns.publish(
                                     TopicArn='arn:aws:sns:us-west-2:<aws-account-id>:smart_social_distancing_lambda',
-                                    Message='SmartSocialDistancing Prod lambda has failed.'
+                                    Message='SmartSocialDistancing Prod lambda has failed with EXCEPTION = {}'.format(str(ex))
                                   )
             
         print(response)
