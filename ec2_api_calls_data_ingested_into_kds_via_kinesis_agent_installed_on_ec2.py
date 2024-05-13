@@ -5,7 +5,7 @@ import csv
 import json
 import collections
 
-url='http://10.37.16.61:8080/VccWebService/Json/PGS_GetPublicCarparksStallCount'
+url='http://<IP Address>:8080/VccWebService/Json/PGS_GetPublicCarparksStallCount'
 #payload = open("request.json")
 r = requests.get(url)
 #print(r.text)
@@ -60,7 +60,11 @@ string1 = unicode(string, "utf-8")
 print(string1)
 
 client = boto3.client("kinesis", region_name = 'us-west-2')
-partition_key = 'test_record'
+
+# Static value in case where overall parking data is small as and can be processed altogether with value:- partition_key = 'psu_record_ids'. 
+# But for big data where hundreds of cars data is involved it should be partitioned by Car Parking_lot_id if we are getting data for all Parking structures in a Zipcode.
+
+partition_key = bdict['CarparkId'] 
 response = client.put_record(StreamName = 'CS_SS_Kinesis_Stream_PSUtilization',
 			     Data = string1, PartitionKey = partition_key)
 print(response)
